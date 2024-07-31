@@ -7,11 +7,11 @@
     <title>Validation Form</title>
 </head>
 <body>
-    <form action="{{url('user_task')}}" method="POST">
+    <form action="{{ url ('user_task')}}" method="POST">
         @csrf
         <div>
             <label for="task_name">Task Name:</label>
-            <input type="text" name="taskname" value="{{old('task_name')}}"/>
+            <input type="text" id="name"  name="task_name"value="{{old('task_name')}}"/>
             @error('task_name')
                 <div>{{$message}}</div>
             @enderror
@@ -45,12 +45,10 @@
          </div>
          <button type="submit">Submit:</button>
      </form>
-     @if(@session('success')
-        <div> {session(success)}</div>
-         
-     @endsession)
-        
-     @endif
+     @if (session('success'))
+        <div> {{session('success')}}</div>
+        @endif
+    </form>
         
 </body>
 </html>
